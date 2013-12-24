@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include DateHelper
   field :name, type: String
   field :weight, type: Integer
 
@@ -10,4 +11,10 @@ class User
   def self.max_weight
   	self.all.desc(:weight).first.weight
   end
+
+  def next_talk
+  	weeks = self.weight - self.class.min_weight
+  	self.next_friday(weeks)
+  end
+
 end
