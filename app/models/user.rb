@@ -7,4 +7,7 @@ class User
   	self.all.asc(:weight).first.weight
   end
 
+  def self.max_weight
+  	self.all.desc(:weight).first.weight
+  end
 end
