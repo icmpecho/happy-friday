@@ -3,6 +3,10 @@ class User
   include DateHelper
   field :name, type: String
   field :weight, type: Integer
+  # auth info
+  field :provider, :type => String
+  field :uid, :type => String
+  field :email, :type => String
 
   def self.min_weight
   	self.all.asc(:weight).first.weight

@@ -32,6 +32,10 @@ end
 
 gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
+
 # Rspec and Capybara
 group :development, :test do
 	gem 'rspec-rails'
