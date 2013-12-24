@@ -8,6 +8,18 @@ class User
   field :uid, :type => String
   field :email, :type => String
 
+  def self.create_with_omniauth(auth)
+	  create! do |user|
+	    user.provider = auth['provider']
+	    user.uid = auth['uid']
+	    user.weight = self.max_weight + 1;
+	    if auth['info']
+	       user.name = auth['info']['name'] || ""
+	       user.email = auth['info']['email'] || ""
+	    end
+	  end
+	end
+
   def self.min_weight
   	if self.all.count > 0
   		self.all.asc(:weight).first.weight
