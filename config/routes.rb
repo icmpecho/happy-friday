@@ -1,6 +1,7 @@
 HappyFriday::Application.routes.draw do
   resources :users
   match '/auth/:provider/callback' => 'sessions#create', :via => [:get, :post]
+  get '/me' => 'users#me', as: 'me'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
