@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 		render json: @users, callback: params['callback']
 	end
 	def me
-		@user = User.find(session[:user_id])
+		@user = session[:user_id] ? User.find(session[:user_id]) : nil
 		render json: @user
 	end
 end
