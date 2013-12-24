@@ -9,11 +9,19 @@ class User
   field :email, :type => String
 
   def self.min_weight
-  	self.all.asc(:weight).first.weight
+  	if self.all.count > 0
+  		self.all.asc(:weight).first.weight
+ 		else
+  		0
+  	end
   end
 
   def self.max_weight
-  	self.all.desc(:weight).first.weight
+  	if self.all.count > 0
+  		self.all.desc(:weight).first.weight
+  	else
+  		0
+  	end
   end
 
   def next_talk
