@@ -17,4 +17,8 @@ class User
   	self.next_friday(weeks)
   end
 
+  def as_json(options)
+  	super( :methods => [:next_talk] )
+  end
+
 end
