@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+		foo = FactoryGirl.create(:user, name: 'Foo', weight: 2)
+		bar = FactoryGirl.create(:user, name: 'Bar', weight: 3)
+	end
+	it 'return correct min_weight' do
+		expect(User.min_weight).to eq 2
+	end
 end
