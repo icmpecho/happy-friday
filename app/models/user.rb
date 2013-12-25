@@ -41,6 +41,13 @@ class User
   	self.next_friday(weeks)
   end
 
+  def volunteer!
+  	if(self.weight != self.class.min_weight)
+  		self.weight = self.class.min_weight - 1
+  		self.save
+  	end
+  end
+
   def as_json(options)
   	super( :methods => [:next_talk] )
   end

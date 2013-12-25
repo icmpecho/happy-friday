@@ -35,6 +35,11 @@ describe User do
 			expect(foo.next_talk).to eq Date.new(2013,12,27)
 			expect(bar.next_talk).to eq Date.new(2014,1,3)
 		end
+		it 'can use volunteer method' do
+			bar.volunteer!
+			expect(bar.next_talk).to eq Date.new(2013,12,27)
+			expect(foo.next_talk).to eq Date.new(2014,1,3)
+		end
 	end
 
 end
