@@ -1,1 +1,8 @@
-Index
+<div><%= link_to "Sign in", signin_path %></div>
+<div><%= link_to "Sign out", signout_path %></div>
+<p>count: <%= @users.count %></p>
+<ul>
+	<% @users.each do |user| %>
+	<li><%= user.name %></li>
+	<% end %>
+</ul>
