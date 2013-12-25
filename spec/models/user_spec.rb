@@ -26,6 +26,9 @@ describe User do
 			end
 			it 'can create weight slot' do
 				User.create_weight_slot!(3)
+				foo.reload
+				bar.reload
+				baz.reload
 				expect(foo.weight).to eq 1
 				expect(bar.weight).to eq 2
 				expect(baz.weight).to eq 4

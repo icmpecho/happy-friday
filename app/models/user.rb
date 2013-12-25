@@ -37,7 +37,7 @@ class User
   end
 
   def self.create_weight_slot!(target_weight)
-  	self.where(:weight.le => target_weight).asc(:weight).each do |user|
+  	self.where(:weight.lte => target_weight).asc(:weight).each do |user|
   		user.weight = user.weight - 1
   		user.save
   	end
