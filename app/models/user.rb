@@ -48,9 +48,11 @@ class User
   	self.next_friday(weeks)
   end
 
-  def volunteer!
-  	if(self.weight != self.class.min_weight)
-  		self.weight = self.class.min_weight - 1
+  def volunteer!(weeks=0)
+  	target_weight = self.class.asc(:weight).skip(weeks).first.weight
+  	if(self.weight != target_weight)
+  		self.class.create_weight_slot!(target_weight - 1)
+  		self.weight = target_weight - 1
   		self.save
   	end
   end

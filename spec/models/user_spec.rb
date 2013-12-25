@@ -56,6 +56,18 @@ describe User do
 			expect(bar.next_talk).to eq Date.new(2013,12,27)
 			expect(foo.next_talk).to eq Date.new(2014,1,3)
 		end
+		it 'can use voluteer method with param' do
+			baz.volunteer!(1)
+			foo.reload
+			bar.reload
+			baz.reload
+			expect(foo.weight).to eq 1
+			expect(foo.next_talk).to eq Date.new(2013,12,27)
+			expect(baz.weight).to eq 2
+			expect(baz.next_talk).to eq Date.new(2014,1,3)
+			expect(bar.weight).to eq 3
+			expect(bar.next_talk).to eq Date.new(2014,1,10)
+		end
 	end
 
 end
