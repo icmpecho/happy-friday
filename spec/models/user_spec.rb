@@ -10,6 +10,8 @@ describe User do
 			end
 		end
 		describe 'with data' do
+			foo = nil
+			bar = nil
 			before do
 				foo = FactoryGirl.create(:user, name: 'Foo', weight: 2)
 				bar = FactoryGirl.create(:user, name: 'Bar', weight: 3)
@@ -19,6 +21,11 @@ describe User do
 			end
 			it 'return correct max_weight' do
 				expect(User.max_weight).to eq 3
+			end
+			it 'can create weight slot' do
+				User.create_weight_slot!(2)
+				expect(foo.weight).to eq 1
+				expect(bar.weight).to eq 3
 			end
 		end
 	end

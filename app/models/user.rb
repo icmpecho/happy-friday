@@ -36,6 +36,13 @@ class User
   	end
   end
 
+  def self.create_weight_slot!(target_weight)
+  	self.where(:weight.le => target_weight).asc(:weight).each do |user|
+  		user.weight = user.weight - 1
+  		user.save
+  	end
+  end
+
   def next_talk
   	weeks = self.class.where(:weight.lt => self.weight).count
   	self.next_friday(weeks)
