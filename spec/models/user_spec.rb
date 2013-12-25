@@ -68,6 +68,16 @@ describe User do
 			expect(bar.weight).to eq 3
 			expect(bar.next_talk).to eq Date.new(2014,1,10)
 		end
+		it 'can not use volunteer to postpone talk' do
+			ret = foo.volunteer!(2)
+			foo.reload
+			bar.reload
+			baz.reload
+			expect(ret).to eq false
+			expect(foo.next_talk).to eq Date.new(2013,12,27)
+			expect(bar.next_talk).to eq Date.new(2014,1,3)
+			expect(baz.next_talk).to eq Date.new(2014,1,10)
+		end
 	end
 
 end

@@ -50,11 +50,15 @@ class User
 
   def volunteer!(weeks=0)
   	target_weight = self.class.asc(:weight).skip(weeks).first.weight
+  	if(target_weight > self.weight)
+  		return false
+  	end
   	if(self.weight != target_weight)
   		self.class.create_weight_slot!(target_weight - 1)
   		self.weight = target_weight - 1
   		self.save
   	end
+  	return true
   end
 
   def as_json(options)
