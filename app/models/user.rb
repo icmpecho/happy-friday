@@ -37,7 +37,7 @@ class User
   end
 
   def next_talk
-  	weeks = self.weight - self.class.min_weight
+  	weeks = self.class.where(:weight.lt => self.weight).count
   	self.next_friday(weeks)
   end
 
