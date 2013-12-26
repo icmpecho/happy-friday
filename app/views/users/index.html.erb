@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         	<% @users.each do |user| %>
-            <tr class="warning">
+            <tr <% if @me and user.id == @me.id %> class="warning" <% end %> >
                 <td>2</td>
                 <td><%= user.name %></td>
                 <td>ABCS</td>
@@ -43,3 +43,33 @@
         </tbody>
     </table>
 </div>
+<div id="inputForm" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add your volunteer's topic</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form">
+                    <div class="form-group">
+                        <label>Topic</label>
+                        <input type="text" placeholder="Enter Your Topic" id="topic" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <select class="form-control">
+                            <option value="1">Next week</option>
+                            <option value="2">Next 2 weeks</option>
+                            <option value="3">Next 3 weeks</option>
+                        </select> 
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
