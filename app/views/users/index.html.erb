@@ -1,8 +1,45 @@
-<div><%= link_to "Sign in", signin_path %></div>
-<div><%= link_to "Sign out", signout_path %></div>
-<p>count: <%= @users.count %></p>
-<ul>
-	<% @users.each do |user| %>
-	<li><%= user.name %></li>
-	<% end %>
-</ul>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Tech Talk's Schdule</div>
+    <div class="panel-body">
+        <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#inputForm"><span class="glyphicon glyphicon-hand-up"></span> Volunteer!</button>
+        <p>Sample table for list of tech talkers</p>
+        <div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <table class="table" ng-controller="MainCtrl">
+        <thead>
+            <tr>
+                <th>Week</th>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Topic</th>
+                <th>Date</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<% @users.each do |user| %>
+            <tr class="warning">
+                <td>2</td>
+                <td><%= user.name %></td>
+                <td>ABCS</td>
+                <td>
+                    <div id="topic">Yeoman<button id="topic_btn" type="button" class="btn btn-primary btn-xs">Edit</button></div>
+                    <form id="topic_form" class="hidden">
+                        <div class="col-xs">
+                            <input name="topic" type="text" placeholder="" class="form-control">
+                            <button type="submit" class="btn btn-primary btn-xs">Confirm</button>
+                            <button type="button" class="btn btn-default btn-xs">Cancel</button>
+                        </div>
+                    </form> 
+                </td>
+                <td><%= user.next_talk %></td>
+                <td></td>
+            </tr>   
+            <% end %>     
+        </tbody>
+    </table>
+</div>

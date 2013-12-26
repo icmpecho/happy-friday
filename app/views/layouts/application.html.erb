@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HappyFriday</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+    <title>HappyFriday</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body ng-app>
+	<div class="container">
+		<div class="header row">
+		    <ul class="nav nav-pills pull-right">
+		        <li class="active"><a ng-href="#">Home</a></li>
+		        <% @users.each do |user| %>
+		        <li><a><%= user.name %></a></li>
+		         
+		        <li>
+		        <% if user -%>
+		        	<%= link_to "Sign out", signout_path %>
+				<% else -%>
+		        	<%= link_to "Sign in", signin_path %>					
+				<% end %>	
+				</li>
+				<% end %>
+		    </ul>
+		    <h3 class="text-muted">Happy Friday!</h3>
+		</div>
+		<div class="row">
+			<%= yield %>
+		</div>		
+		<div class="footer row">
+		    <p>© 2013 ABCTECH</p>
+		</div>
+	</div>	
 </body>
 </html>
