@@ -27,6 +27,17 @@
 		    </ul>
 		    <h3 class="text-muted">Happy Friday!</h3>
 		</div>
+		<% flash.each do |name, msg| %>
+			<% if name == :success %>
+			<div class="alert alert-success">
+			<% elsif name == :error %>
+			<div class="alert alert-danger">
+			<% else %>
+			<div class="alert alert-info">
+			<% end %>
+				<%= msg %>
+			</div>
+		<% end %>
 		<div class="row">
 			<%= yield %>
 		</div>		

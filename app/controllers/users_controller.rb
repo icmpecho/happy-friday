@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 	def volunteer
 		@user = session[:user_id] ? User.find(session[:user_id]) : nil
 		if(!@user)
+			flash[:error] = "Please log in to volunteer."
 			respond_to do |format|
 				format.html { redirect_to users_path }
 				format.json { render json: false }
@@ -24,6 +25,11 @@ class UsersController < ApplicationController
 		end
 		weeks = params[:weeks] || 0
 		ret = @user.volunteer!(weeks)
+		if(ret)
+			flash[:success] = "Success!"
+		else
+			flash[:error] = "You can't volunteer like that!"
+		end
 		respond_to do |format|
 			format.html { redirect_to users_path }
 			format.json { render json: ret }
