@@ -3,6 +3,7 @@ class User
   include DateHelper
   field :name, type: String
   field :weight, type: Integer
+  has_many :talks
   # auth info
   field :provider, :type => String
   field :uid, :type => String
