@@ -29,12 +29,13 @@
 		</div>
 		<% flash.each do |name, msg| %>
 			<% if name == :success %>
-			<div class="alert alert-success">
+			<div class="alert alert-success fade in alert-dismissable">
 			<% elsif name == :error %>
-			<div class="alert alert-danger">
+			<div class="alert alert-danger fade in alert-dismissable">
 			<% else %>
-			<div class="alert alert-info">
+			<div class="alert alert-info fade in alert-dismissable">
 			<% end %>
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				<%= msg %>
 			</div>
 		<% end %>

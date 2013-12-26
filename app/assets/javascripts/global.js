@@ -9,4 +9,7 @@ $(document).ready(function (){
 		$('#topic').removeClass('hidden');
 	});
 
+	// fade out when alert box trigger
+	$(".alert").fadeOut(2000);
+
 });
