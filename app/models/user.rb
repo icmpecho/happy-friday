@@ -50,7 +50,7 @@ class User
 
   def volunteer!(weeks=0)
   	target_weight = self.class.asc(:weight).skip(weeks).first.weight
-  	if(target_weight > self.weight)
+  	if(target_weight >= self.weight)
   		return false
   	end
   	if(self.weight != target_weight)
