@@ -7,7 +7,7 @@ describe "Users" do
   		bar = FactoryGirl.create(:user, name: 'Bar')
   	end
     it "send list of users" do
-      get users_path
+      get users_path(format: 'json')
       expect(response).to be_success
       json = JSON.parse(response.body)
       expect(json.length).to eq 2
