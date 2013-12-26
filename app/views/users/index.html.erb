@@ -15,6 +15,7 @@
             </div>
         </form>
     </div>
+    <% if @me.talk? %>
     <div class="panel-body">        
         <form role="form" class="form" action="<%= talks_path %>" method="post">
             <div class="form-group form-inline pull-right">
@@ -24,6 +25,7 @@
             </div>
         </form>
     </div>
+    <% end %>
     <% end %>
 
     <!-- Table -->

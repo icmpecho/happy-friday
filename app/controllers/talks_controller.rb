@@ -19,6 +19,14 @@ class TalksController < ApplicationController
 			end
 			return
 		end
+		if( !user.talk? )
+			flash[:error] = "You're not the one who should talk."
+			respond_to do |format|
+				format.html { redirect_to talks_path }
+				format.json { render json: false }
+			end
+			return
+		end
 		talk = Talk.new(
 			date: self.last_friday,
 			topic: params['topic'],
