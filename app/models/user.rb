@@ -69,6 +69,10 @@ class User
   	end
   end
 
+  def talk?
+  	self.weight == self.class.min_weight 
+  end
+
   def as_json(options)
   	super( :methods => [:next_talk] )
   end

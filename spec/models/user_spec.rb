@@ -84,6 +84,11 @@ describe User do
 			expect(foo.next_talk).to eq Date.new(2014,1,10)
 			expect(foo.weight).to eq 6
 		end
+		it "know if it's the next one who talk" do
+			expect(foo.talk?).to eq true
+			expect(bar.talk?).to eq false
+			expect(baz.talk?).to eq false
+		end
 	end
 
 end
