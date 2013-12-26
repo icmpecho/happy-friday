@@ -11,17 +11,19 @@
 		<div class="header row">
 		    <ul class="nav nav-pills pull-right">
 		        <li class="active"><a ng-href="#">Home</a></li>
-		        <% @users.each do |user| %>
-		        <li><a><%= user.name %></a></li>
-		         
+		        <% if @me -%>
+		        <li><a><%= @me.name %></a></li>
+		        <% else -%>
+		        <li><a>Guest</a></li>
+		        <% end %>
 		        <li>
-		        <% if user -%>
+		        <% if @me -%>
 		        	<%= link_to "Sign out", signout_path %>
 				<% else -%>
 		        	<%= link_to "Sign in", signin_path %>					
 				<% end %>	
 				</li>
-				<% end %>
+
 		    </ul>
 		    <h3 class="text-muted">Happy Friday!</h3>
 		</div>
