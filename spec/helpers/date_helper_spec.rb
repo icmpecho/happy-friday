@@ -16,4 +16,12 @@ describe DateHelper do
 		expect(helper.next_friday).to eq Date.new(2013,12,27)
 		expect(helper.next_friday(1)).to eq Date.new(2014,1,3)
 	end
+	it 'return correct last_friday' do
+		Date.stub(:today).and_return(Date.new(2013,12,24))
+		expect(helper.last_friday).to eq Date.new(2013,12,20)
+	end
+	it 'return today as last_friday if today is friday' do
+		Date.stub(:today).and_return(Date.new(2013,12,27))
+		expect(helper.last_friday).to eq Date.new(2013,12,27)
+	end
 end
