@@ -1,4 +1,5 @@
 HappyFriday::Application.routes.draw do
+  root 'users#index'
   resources :users
   resources :talks
   match '/auth/:provider/callback' => 'sessions#create', :via => [:get, :post]
