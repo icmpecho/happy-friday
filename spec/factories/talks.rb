@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :talk do
+  	date Date.today
   end
 end

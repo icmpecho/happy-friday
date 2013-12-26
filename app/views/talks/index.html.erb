@@ -1,0 +1,10 @@
+<h1>Talks</h1>
+<table>
+<% @talks.each do |talk| %>
+<tr>
+	<td><%= talk.date %></td>
+	<td><%= talk.topic %></td>
+	<td><%= talk.user.name %></td>
+</tr>
+<% end %>
+</table>
