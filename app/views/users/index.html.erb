@@ -1,6 +1,7 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">Tech Talk's Schdule</div>
+    <% if @me %>
     <div class="panel-body">        
         <form role="form" class="form" action="<%= volunteer_path %>" method="post">
             <div class="form-group form-inline pull-right">
@@ -14,6 +15,7 @@
             </div>
         </form>
     </div>
+    <% end %>
 
     <!-- Table -->
     <table class="table" ng-controller="MainCtrl">
