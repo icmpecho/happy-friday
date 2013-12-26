@@ -78,6 +78,12 @@ describe User do
 			expect(bar.next_talk).to eq Date.new(2014,1,3)
 			expect(baz.next_talk).to eq Date.new(2014,1,10)
 		end
+		it 'can report talk' do
+			foo.talked!
+			foo.reload
+			expect(foo.next_talk).to eq Date.new(2014,1,10)
+			expect(foo.weight).to eq 6
+		end
 	end
 
 end

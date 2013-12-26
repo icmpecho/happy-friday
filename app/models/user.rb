@@ -62,6 +62,13 @@ class User
   	return true
   end
 
+  def talked!
+  	if self.weight != self.class.max_weight
+  		self.weight = self.class.max_weight + 1
+  		self.save
+  	end
+  end
+
   def as_json(options)
   	super( :methods => [:next_talk] )
   end
