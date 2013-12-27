@@ -48,7 +48,13 @@ class User
 
   def next_talk
   	weeks = self.class.where(:weight.lt => self.weight).count
-  	self.next_friday(weeks)
+    dates = []
+    (0..weeks).each do |week|
+      date = self.next_friday(week)
+      dates << date
+    end
+    skips = NoTechtalkDay.in(date: dates).count
+  	self.next_friday(weeks + skips)
   end
 
   def volunteer!(weeks=0)
