@@ -1,1 +1,10 @@
 <h1>Skips:</h1>
+<table>
+	<% @days.each do |day| %>
+	<tr>
+		<td><%= day.date %></td>
+		<td><%= day.reason %></td>
+		<td><%= day.reporter.name %></td>
+	</tr>
+	<% end %>
+</table>
