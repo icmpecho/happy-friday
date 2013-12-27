@@ -10,10 +10,10 @@
 	<div class="container">
 		<div class="header row">
 		    <ul class="nav nav-pills pull-right">
-		        <li<% if @title == 'Users' %> class="active"<% end %>><a href="/users">Home</a></li>
-		        <li<% if @title == 'Talks' %> class="active"<% end %>><a href="/talks">Talks</a></li>
+		        <li<% if @title == 'Users' %> class="active"<% end %>><a href="<%=users_path%>">Home</a></li>
+		        <li<% if @title == 'Talks' %> class="active"<% end %>><a href="<%=talks_path%>">Talks</a></li>
 		        <% if @me -%>
-		        <li><a><%= @me.name %></a></li>
+		        <li<% if @title == 'Me' %> class="active"<% end %>><a href="<%=me_path%>"><%= @me.name %></a></li>
 		        <% else -%>
 		        <li><a>Guest</a></li>
 		        <% end %>

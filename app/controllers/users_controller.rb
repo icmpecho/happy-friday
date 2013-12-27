@@ -11,8 +11,12 @@ class UsersController < ApplicationController
 		end
 	end
 	def me
-		@user = session[:user_id] ? User.find(session[:user_id]) : nil
-		render json: @user
+		@title = 'Me'
+		@me = session[:user_id] ? User.find(session[:user_id]) : nil
+		respond_to do |format|
+			format.html
+			format.json { render json: @me, callback: params['callback'] }
+		end
 	end
 	def volunteer
 		@user = session[:user_id] ? User.find(session[:user_id]) : nil
