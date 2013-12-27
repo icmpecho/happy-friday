@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">Tech Talk's History</div>
-    <% if @me.talk? %>
+    <% if @me && @me.talk? %>
     <div class="panel-body">        
         <form role="form" class="form-inline pull-right" action="<%= talks_path %>" method="post">
             <div class="form-group">
