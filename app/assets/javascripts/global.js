@@ -10,6 +10,12 @@ $(document).ready(function (){
 	});
 
 	// fade out when alert box trigger
-	$(".alert").fadeOut(2000);
+	$('.alert').fadeOut(2000);
+
+	// get date value and put in form
+	$('.skip').on('click', function(){
+		var date = $(this).parent().parent().find('td.date').text();
+		$("#date").val(date);
+	});
 
 });

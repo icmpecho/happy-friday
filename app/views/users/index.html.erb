@@ -18,7 +18,7 @@
     <% end %>
 
     <!-- Table -->
-    <table class="table" ng-controller="MainCtrl">
+    <table class="table">
         <thead>
             <tr>
                 <th>Team</th>
@@ -34,8 +34,8 @@
                 <td><%= user.team %></td>
                 <td><%= user.name %></td>
                 <td><%= user.nickname %></td>
-                <td><%= user.next_talk %></td>
-                <td><button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal">Skip it!</button></td>
+                <td class="date"><%= user.next_talk %></td>
+                <td><button type="submit" class="btn btn-danger btn-sm skip" data-toggle="modal" data-target="#modal">Skip it!</button></td>
             </tr>   
             <% end %>     
         </tbody>
@@ -52,6 +52,7 @@
 				</div>
 				<div class="modal-body">					
 		            <div class="form-group">
+		            	<input id="date" type="text" class="hide" name="date" value=""/>
 		                <label>Reason : </label>
 		                <input type="text" name="reason" class="form-control" placeholder="Your reason">
 		            </div>
