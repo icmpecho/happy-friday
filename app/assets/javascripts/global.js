@@ -15,7 +15,7 @@ $(document).ready(function (){
 	// get date value and put in form
 	$('.skip').on('click', function(){
 		var date = $(this).parent().parent().find('td.date').text();
-		$("#date").val(date);
+		$("input[name=date]").val(date);
 	});
 
 });
