@@ -1,4 +1,8 @@
+<% if @me %>
 <p>name: <%= @me.name %></p>
 <p>email: <%= @me.email %></p>
 <p>team: <%= @me.team %></p>
 <p>irc: <%= @me.nickname %></p>
+<% else %>
+<p>You need to sign-in to view this page.</p>
+<% end %>
