@@ -10,6 +10,15 @@
 		<input type="submit">
 	</form>
 </div>
+<h2>My previous sessions:</h2>
+<table>
+	<% @me.talks.each do |talk| %>
+	<tr>
+		<td><%= talk.date %></td>
+		<td><%= talk.topic %></td>
+	</tr>
+	<% end %>
+</table>
 <% else %>
 <p>You need to sign-in to view this page.</p>
 <% end %>
