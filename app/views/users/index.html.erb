@@ -7,9 +7,9 @@
             <div class="form-group form-inline pull-right">
                 <label>Date : </label>
                 <select class="form-control" name="weeks">
-                    <option value="0">Next week</option>
-                    <option value="1">Next 2 weeks</option>
-                    <option value="2">Next 3 weeks</option>
+                    <option value="0">This week</option>
+                    <option value="1">Next week</option>
+                    <option value="2">Next 2 weeks</option>
                 </select> 
             	<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-hand-up"></span> Volunteer!</button>
             </div>
@@ -21,32 +21,19 @@
     <table class="table" ng-controller="MainCtrl">
         <thead>
             <tr>
-                <th>Week</th>
-                <th>Name</th>
                 <th>Team</th>
-                <th>Topic</th>
+                <th>Name</th>
+                <th>IRC</th>
                 <th>Date</th>
-                <th>Option</th>
             </tr>
         </thead>
         <tbody>
         	<% @users.each do |user| %>
             <tr <% if @me and user.id == @me.id %> class="warning" <% end %> >
-                <td>2</td>
+                <td><%= user.team %></td>
                 <td><%= user.name %></td>
-                <td>ABCS</td>
-                <td>
-                    <div id="topic">Yeoman<button id="topic_btn" type="button" class="btn btn-primary btn-xs">Edit</button></div>
-                    <form id="topic_form" class="hidden">
-                        <div class="col-xs">
-                            <input name="topic" type="text" placeholder="" class="form-control">
-                            <button type="submit" class="btn btn-primary btn-xs">Confirm</button>
-                            <button type="button" class="btn btn-default btn-xs">Cancel</button>
-                        </div>
-                    </form> 
-                </td>
+                <td><%= user.nickname %></td>
                 <td><%= user.next_talk %></td>
-                <td></td>
             </tr>   
             <% end %>     
         </tbody>
