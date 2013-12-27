@@ -2,6 +2,7 @@ HappyFriday::Application.routes.draw do
   root 'users#index'
   resources :users
   resources :talks
+  resources :no_techtalk_days
   match '/auth/:provider/callback' => 'sessions#create', :via => [:get, :post]
   get '/signin' => 'sessions#new', as: 'signin'
   get '/signout' => 'sessions#destroy', as: 'signout'
