@@ -49,12 +49,10 @@
             <tr>
                 <th>Date</th>
                 <th>Topic</th>
-                <th>Speaker</th>
-                <th>From</th>
             </tr>
         </thead>
         <tbody>
-        	<% @me.talks.each do |talk| %>
+        	<% @me.talks.desc(:date).each do |talk| %>
             <tr>
                 <td><%= talk.date %></td>
                 <td><%= talk.topic %></td>
