@@ -1,10 +1,40 @@
-<h1>Talks</h1>
-<table>
-<% @talks.each do |talk| %>
-<tr>
-	<td><%= talk.date %></td>
-	<td><%= talk.topic %></td>
-	<td><%= talk.user.name %></td>
-</tr>
-<% end %>
-</table>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Tech Talk's History</div>
+    <% if @me.talk? %>
+    <div class="panel-body">        
+        <form role="form" class="form-inline pull-right" action="<%= talks_path %>" method="post">
+            <div class="form-group">
+                <label class="sr-only">Previous Topic : </label>
+                <input type="text" name="topic" class="form-control" placeholder="Your previous topic">
+            </div>
+            <button type="submit" class="btn btn-success">Report!</button>
+        </form>
+    </div>
+    <% end %>
+    <!-- Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Week</th>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Topic</th>
+                <th>Date</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<% @talks.each do |talk| %>
+            <tr>
+                <td>2</td>
+                <td><%= talk.user.name %></td>
+                <td>ABCS</td>
+                <td><%= talk.topic %></td>
+                <td><%= talk.date %></td>
+                <td></td>
+            </tr>   
+            <% end %>     
+        </tbody>
+    </table>
+</div>
