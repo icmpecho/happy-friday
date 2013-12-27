@@ -2,6 +2,8 @@ class User
   include Mongoid::Document
   include DateHelper
   field :name, type: String
+  field :nickname, type: String
+  field :team, type: String
   field :weight, type: Integer
   has_many :talks
   # auth info
