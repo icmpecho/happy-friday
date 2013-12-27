@@ -82,7 +82,7 @@ class User
   end
 
   def as_json(options)
-  	super( :methods => [:next_talk] )
+  	super( :methods => [:next_talk], :except => [:provider, :uid, :email] )
   end
 
 end
