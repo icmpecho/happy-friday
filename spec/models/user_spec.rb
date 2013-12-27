@@ -53,9 +53,11 @@ describe User do
 		end
 		it 'return correct next_talk with skips' do
 			FactoryGirl.create(:no_techtalk_day, date: Date.new(2014,1,3))
+			FactoryGirl.create(:no_techtalk_day, date: Date.new(2014,1,10))
+			FactoryGirl.create(:no_techtalk_day, date: Date.new(2014,1,17))
 			expect(foo.next_talk).to eq Date.new(2013,12,27)
-			expect(bar.next_talk).to eq Date.new(2014,1,10)
-			expect(baz.next_talk).to eq Date.new(2014,1,17)
+			expect(bar.next_talk).to eq Date.new(2014,1,24)
+			expect(baz.next_talk).to eq Date.new(2014,1,31)
 		end
 		it 'can use volunteer method' do
 			bar.volunteer!
