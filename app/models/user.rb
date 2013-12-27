@@ -11,6 +11,10 @@ class User
   field :uid, :type => String
   field :email, :type => String
 
+  validates :name, uniqueness: true
+  validates :uid, uniqueness: { scope: :provider }
+  validates :email, uniqueness: true
+
   def self.create_with_omniauth(auth)
 	  create! do |user|
 	    user.provider = auth['provider']
