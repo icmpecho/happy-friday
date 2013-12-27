@@ -2,6 +2,7 @@ class TalksController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 	include DateHelper
 	def index
+		@title = 'Talks'
 		@talks = Talk.desc(:date)
 		@me = session[:user_id] ? User.find(session[:user_id]) : nil
 		respond_to do |format|
