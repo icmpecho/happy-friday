@@ -15,7 +15,7 @@ class TalksController < ApplicationController
 		if( !user )
 			flash[:error] = "Please log in to report talk."
 			respond_to do |format|
-				format.html { redirect_to users_path }
+				format.html { redirect_to talks_path }
 				format.json { render json: false }
 			end
 			return
@@ -23,7 +23,7 @@ class TalksController < ApplicationController
 		if( !user.talk? )
 			flash[:error] = "You're not the one who should talk."
 			respond_to do |format|
-				format.html { redirect_to users_path }
+				format.html { redirect_to talks_path }
 				format.json { render json: false }
 			end
 			return
@@ -31,7 +31,7 @@ class TalksController < ApplicationController
 		if( !params['topic'] || params['topic'] == '' )
 			flash[:error] = "Please specify your topic."
 			respond_to do |format|
-				format.html { redirect_to users_path }
+				format.html { redirect_to talks_path }
 				format.json { render json: false }
 			end
 			return
