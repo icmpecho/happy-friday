@@ -3,6 +3,13 @@
 <p>email: <%= @me.email %></p>
 <p>team: <%= @me.team %></p>
 <p>irc: <%= @me.nickname %></p>
+<div>
+	<form action="<%= me_path %>" method="post">
+		New IRC Name: <input type="text" name="nickname">
+		New Team: <input type="text" name="team">
+		<input type="submit">
+	</form>
+</div>
 <% else %>
 <p>You need to sign-in to view this page.</p>
 <% end %>

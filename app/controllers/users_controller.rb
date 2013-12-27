@@ -18,6 +18,31 @@ class UsersController < ApplicationController
 			format.json { render json: @me, callback: params['callback'] }
 		end
 	end
+	def update_me
+		@user = session[:user_id] ? User.find(session[:user_id]) : nil
+		if(!@user)
+			flash[:error] = "Please log in to update your profile."
+			respond_to do |format|
+				format.html { redirect_to users_path }
+				format.json { render json: false }
+			end
+			return
+		end
+		nickname = params[:nickname].blank? ? @user.nickname : params[:nickname]
+		team = params[:team].blank? ? @user.team : params[:team]
+		@user.team = team
+		@user.nickname = nickname
+		ret = @user.save
+		if ret
+			flash[:success] = "Success!"
+		else
+			flash[:error] = "Can't update profile"
+		end
+		respond_to do |format|
+			format.html { redirect_to me_path }
+			format.json { render json: ret }
+		end
+	end
 	def volunteer
 		@user = session[:user_id] ? User.find(session[:user_id]) : nil
 		if(!@user)
