@@ -15,17 +15,6 @@
             </div>
         </form>
     </div>
-    <% if @me.talk? %>
-    <div class="panel-body">        
-        <form role="form" class="form" action="<%= talks_path %>" method="post">
-            <div class="form-group form-inline pull-right">
-                <label>Topic : </label>
-                <input type="text" name="topic">
-                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-hand-up"></span> Report!</button>
-            </div>
-        </form>
-    </div>
-    <% end %>
     <% end %>
 
     <!-- Table -->
