@@ -16,23 +16,19 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Week</th>
-                <th>Name</th>
-                <th>Team</th>
-                <th>Topic</th>
                 <th>Date</th>
-                <th>Option</th>
+                <th>Topic</th>
+                <th>Speaker</th>
+                <th>From</th>
             </tr>
         </thead>
         <tbody>
         	<% @talks.each do |talk| %>
             <tr>
-                <td>2</td>
-                <td><%= talk.user.name %></td>
-                <td>ABCS</td>
-                <td><%= talk.topic %></td>
                 <td><%= talk.date %></td>
-                <td></td>
+                <td><%= talk.topic %></td>
+                <td><%= talk.user.name %></td>
+                <td><%= talk.user.team %></td>
             </tr>   
             <% end %>     
         </tbody>
