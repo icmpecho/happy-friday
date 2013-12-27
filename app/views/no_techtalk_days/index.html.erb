@@ -1,10 +1,23 @@
-<h1>Skips:</h1>
-<table>
-	<% @days.each do |day| %>
-	<tr>
-		<td><%= day.date %></td>
-		<td><%= day.reason %></td>
-		<td><%= day.reporter.name %></td>
-	</tr>
-	<% end %>
-</table>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Skip date</div>
+    <!-- Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Reason</th>
+                <th>Repoter</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<% @days.each do |day| %>
+            <tr>
+                <td><%= day.date %></td>
+                <td><%= day.reason %></td>
+                <td><%= day.reporter.name %></td>
+            </tr>   
+            <% end %>     
+        </tbody>
+    </table>
+</div>
