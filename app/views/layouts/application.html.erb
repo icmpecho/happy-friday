@@ -15,8 +15,6 @@
 		        <li<% if @title == 'Skips' %> class="active"<% end %>><a href="<%=no_techtalk_days_path%>">Skips</a></li>
 		        <% if @me -%>
 		        <li<% if @title == 'Me' %> class="active"<% end %>><a href="<%=me_path%>"><%= @me.name %></a></li>
-		        <% else -%>
-		        <li><a>Guest</a></li>
 		        <% end %>
 		        <li>
 		        <% if @me -%>
