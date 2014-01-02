@@ -18,6 +18,7 @@ FactoryGirl.define do
     name
     email
     uid
+    active true
     weight 1
   end
 

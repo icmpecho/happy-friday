@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 	def index
 		@title = 'Users'
-		@users = User.all.asc(:weight)
+		@users = User.speakers
 		my_id = session[:user_id]
 		@me = my_id ? User.find(my_id) : nil
 		respond_to do |format|

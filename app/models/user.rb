@@ -5,6 +5,7 @@ class User
   field :nickname, type: String
   field :team, type: String
   field :weight, type: Integer
+  field :active, type: Boolean
   has_many :talks
   # auth info
   field :provider, :type => String
@@ -27,31 +28,38 @@ class User
 	  end
 	end
 
+  def self.speakers
+    self.where(active: true).asc(:weight)
+  end
+
   def self.min_weight
-  	if self.all.count > 0
-  		self.all.asc(:weight).first.weight
+  	if self.speakers.count > 0
+  		self.speakers.asc(:weight).first.weight
  		else
   		0
   	end
   end
 
   def self.max_weight
-  	if self.all.count > 0
-  		self.all.desc(:weight).first.weight
+  	if self.speakers.count > 0
+  		self.speakers.desc(:weight).first.weight
   	else
   		0
   	end
   end
 
   def self.create_weight_slot!(target_weight)
-  	self.where(:weight.lte => target_weight).asc(:weight).each do |user|
+  	self.speakers.where(:weight.lte => target_weight).asc(:weight).each do |user|
   		user.weight = user.weight - 1
   		user.save
   	end
   end
 
   def next_talk
-  	weeks = self.class.where(:weight.lt => self.weight).count
+    if(!self.active)
+      return false
+    end
+  	weeks = self.class.speakers.where(:weight.lt => self.weight).count
     total_weeks = weeks
     last_skips = 0;
     skips = nil;
@@ -69,7 +77,10 @@ class User
   end
 
   def volunteer!(weeks=0)
-  	target_weight = self.class.asc(:weight).skip(weeks).first.weight
+    if(!self.active)
+      return false
+    end
+  	target_weight = self.class.speakers.skip(weeks).first.weight
   	if(target_weight >= self.weight)
   		return false
   	end
@@ -82,6 +93,9 @@ class User
   end
 
   def talked!
+    if(!self.active)
+      return false
+    end
   	if self.weight != self.class.max_weight
   		self.weight = self.class.max_weight + 1
   		self.save
@@ -89,6 +103,9 @@ class User
   end
 
   def talk?
+    if(!self.active)
+      return false
+    end
   	self.weight == self.class.min_weight 
   end
 

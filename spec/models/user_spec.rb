@@ -44,6 +44,7 @@ describe User do
 			foo = FactoryGirl.create(:user, name: 'Foo', weight: 2)
 			bar = FactoryGirl.create(:user, name: 'Bar', weight: 3)
 			baz = FactoryGirl.create(:user, name: 'Baz', weight: 5)
+			inactive = FactoryGirl.create(:user, name: 'InActive', weight: 4, active: false)
 			Date.stub(:today).and_return(Date.new(2013,12,24))
 		end
 		it 'return correct next_talk' do
