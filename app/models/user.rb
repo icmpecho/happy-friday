@@ -21,6 +21,7 @@ class User
 	    user.provider = auth['provider']
 	    user.uid = auth['uid']
 	    user.weight = self.max_weight + 1;
+      user.active = true
 	    if auth['info']
 	       user.name = auth['info']['name'] || ""
 	       user.email = auth['info']['email'] || ""
