@@ -35,6 +35,8 @@ gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
+gem 'newrelic_rpm'
+
 
 # Rspec and Capybara
 group :development, :test do
