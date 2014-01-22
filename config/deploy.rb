@@ -40,6 +40,9 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
+      if !test( "[ -d #{release_path.join('tmp/')} ]")
+        execute :mkdir, release_path.join('tmp/')
+      end
       execute :touch, release_path.join('tmp/restart.txt')
     end
   end
