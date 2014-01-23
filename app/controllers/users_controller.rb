@@ -2,7 +2,12 @@ class UsersController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 	def index
 		@title = 'Users'
-		@users = User.speakers
+		nickname = params[:nickname]
+		if nickname
+			@users = User.speakers.where(nickname: nickname)
+		else
+			@users = User.speakers
+		end
 		my_id = session[:user_id]
 		@me = my_id ? User.find(my_id) : nil
 		respond_to do |format|
