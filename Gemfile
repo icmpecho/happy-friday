@@ -37,6 +37,11 @@ gem 'omniauth-google-oauth2'
 
 gem 'newrelic_rpm'
 
+group :development do
+    gem 'capistrano'
+    gem 'capistrano-rvm'
+    gem 'capistrano-rails'
+end
 
 # Rspec and Capybara
 group :development, :test do
