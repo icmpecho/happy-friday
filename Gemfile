@@ -47,9 +47,6 @@ end
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
-	gem 'capistrano'
-	gem 'capistrano-bundler'
-	gem 'capistrano-rvm'
 end
  
 group :test do

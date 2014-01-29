@@ -17,7 +17,7 @@ set :deploy_to, '/home/ping/happy-friday'
 # set :format, :pretty
 
 # Default value for :log_level is :debug
-set :log_level, :info
+# set :log_level, :info
 
 # Default value for :pty is false
 # set :pty, true
