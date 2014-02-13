@@ -17,7 +17,7 @@ class FoodFinderTeamsController < ApplicationController
   # GET /food_finder_teams/new
   def new
     @food_finder_team = FoodFinderTeam.new
-    @food_finder_team.weight = FoodFinderTeam.desc(:weight).first.weight + 1
+    @food_finder_team.weight = FoodFinderTeam.max_weight + 1
   end
 
   # GET /food_finder_teams/1/edit
