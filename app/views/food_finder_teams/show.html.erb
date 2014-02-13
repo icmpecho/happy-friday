@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @food_finder_team.name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @food_finder_team.weight %>
+</p>
+
+<strong>Members:</strong>
+<ul>
+  <% @food_finder_team.members.each do |member| %>
+  <li><%= member.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_food_finder_team_path(@food_finder_team) %> |
+<%= link_to 'Back', food_finder_teams_path %>

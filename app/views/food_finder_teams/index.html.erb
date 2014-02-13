@@ -1,0 +1,29 @@
+<h1>Listing food_finder_teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Weight</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @food_finder_teams.each do |food_finder_team| %>
+      <tr>
+        <td><%= food_finder_team.name %></td>
+        <td><%= food_finder_team.weight %></td>
+        <td><%= link_to 'Show', food_finder_team %></td>
+        <td><%= link_to 'Edit', edit_food_finder_team_path(food_finder_team) %></td>
+        <td><%= link_to 'Destroy', food_finder_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Food finder team', new_food_finder_team_path %>

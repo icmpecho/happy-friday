@@ -32,6 +32,17 @@
 					<input type="text" class="form-control" name="nickname" placeholder="Your irc nickname" value="<%= @me.nickname %>">
 			    </div>
 		  	</div>
+            <div class="form-group">
+                <label class="col-sm-2 control-lable">Food Finder</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="food_finder_team">
+                        <option value="">Please specify your food finder team.</option>
+                        <% @teams.each do |team| %>
+                        <option <% if @me.food_finder_team and @me.food_finder_team.id == team.id%>selected<% end %> value="<%= team.id %>"><%= team.name %></option>
+                        <% end %>
+                    </select>
+                </div>
+            </div>
 		  	<div class="form-group">
 		    	<div class="col-sm-offset-2 col-sm-10">
 			      	<button type="submit" class="btn btn-primary">Submit</button>

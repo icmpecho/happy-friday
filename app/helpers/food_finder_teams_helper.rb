@@ -1,0 +1,2 @@
+module FoodFinderTeamsHelper
+end

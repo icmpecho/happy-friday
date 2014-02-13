@@ -7,6 +7,7 @@ class User
   field :weight, type: Integer
   field :active, type: Boolean
   has_many :talks
+  belongs_to :food_finder_team
   # auth info
   field :provider, :type => String
   field :uid, :type => String

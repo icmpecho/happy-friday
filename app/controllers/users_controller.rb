@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 	end
 	def me
 		@title = 'Me'
+		@teams = FoodFinderTeam.all
 		@me = session[:user_id] ? User.find(session[:user_id]) : nil
 		respond_to do |format|
 			format.html
@@ -35,8 +36,11 @@ class UsersController < ApplicationController
 		end
 		nickname = params[:nickname].blank? ? @user.nickname : params[:nickname]
 		team = params[:team].blank? ? @user.team : params[:team]
+		food_finder_id = params[:food_finder_team]
+		food_finder_team = FoodFinderTeam.find(food_finder_id)
 		@user.team = team
 		@user.nickname = nickname
+		@user.food_finder_team = food_finder_team
 		ret = @user.save
 		if ret
 			flash[:success] = "Success!"
