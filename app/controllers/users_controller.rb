@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 		end
 	end
 	def me
+		@title = 'Me'
 		@teams = FoodFinderTeam.all
 		@me = session[:user_id] ? User.find(session[:user_id]) : nil
 		respond_to do |format|
