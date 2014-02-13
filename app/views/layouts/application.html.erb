@@ -3,15 +3,21 @@
 <head>
     <title>HappyFriday | <%= @title %></title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>	
     <%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="container">
 		<div class="header row">
 		    <ul class="nav nav-pills pull-right">
-		        <li<% if @title == 'Users' %> class="active"<% end %>><a href="<%=users_path%>">Home</a></li>
-		        <li<% if @title == 'Talks' %> class="active"<% end %>><a href="<%=talks_path%>">Talks</a></li>
-		        <li<% if @title == 'Skips' %> class="active"<% end %>><a href="<%=no_techtalk_days_path%>">No TechTalk Days</a></li>
+		    	<li class="dropdown <% if @title == 'Users' or @title == 'Talks' or @title == 'Skips'%>active<% end %>">
+		    		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech Talk <b class="caret"></b></a>
+		    		<ul class="dropdown-menu">
+		    			<li<% if @title == 'Users' %> class="active"<% end %>><a href="<%=users_path%>">Home</a></li>
+		        		<li<% if @title == 'Talks' %> class="active"<% end %>><a href="<%=talks_path%>">Talks</a></li>
+		        		<li<% if @title == 'Skips' %> class="active"<% end %>><a href="<%=no_techtalk_days_path%>">No TechTalk Days</a></li>
+		    		</ul>
+		    	</li>
 		        <% if @me -%>
 		        <li<% if @title == 'Me' %> class="active"<% end %>><a href="<%=me_path%>"><%= @me.name %></a></li>
 		        <% end %>
@@ -45,6 +51,6 @@
 		    <p>© 2013 ABCTECH</p>
 		</div>
 	</div>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>	
+    
 </body>
 </html>
