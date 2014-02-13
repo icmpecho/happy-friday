@@ -9,6 +9,9 @@ class FoodFinderTeam
   end
 
   def delivered!
-    self.weight = self.class.max_weight + 1
+    if self.weight != self.class.max_weight
+        self.weight = self.class.max_weight + 1 
+        self.save
+    end
   end
 end
