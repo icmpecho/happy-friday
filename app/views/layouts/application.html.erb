@@ -13,8 +13,8 @@
 		    	<li class="dropdown <% if @title == 'Users' or @title == 'Talks' or @title == 'Skips'%>active<% end %>">
 		    		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech Talk <b class="caret"></b></a>
 		    		<ul class="dropdown-menu">
-		    			<li<% if @title == 'Users' %> class="active"<% end %>><a href="<%=users_path%>">Home</a></li>
-		        		<li<% if @title == 'Talks' %> class="active"<% end %>><a href="<%=talks_path%>">Talks</a></li>
+		    			<li<% if @title == 'Users' %> class="active"<% end %>><a href="<%=users_path%>">Schedule</a></li>
+		        		<li<% if @title == 'Talks' %> class="active"<% end %>><a href="<%=talks_path%>">History</a></li>
 		        		<li<% if @title == 'Skips' %> class="active"<% end %>><a href="<%=no_techtalk_days_path%>">No TechTalk Days</a></li>
 		    		</ul>
 		    	</li>
