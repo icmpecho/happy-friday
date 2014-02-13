@@ -1,10 +1,11 @@
 class FoodFinderTeamsController < ApplicationController
   before_action :set_food_finder_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_me
 
   # GET /food_finder_teams
   # GET /food_finder_teams.json
   def index
-    @food_finder_teams = FoodFinderTeam.all
+    @food_finder_teams = FoodFinderTeam.asc(:weight)
   end
 
   # GET /food_finder_teams/1
@@ -70,5 +71,9 @@ class FoodFinderTeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_finder_team_params
       params.require(:food_finder_team).permit(:name, :weight)
+    end
+
+    def set_me
+      @me = session[:user_id] ? User.find(session[:user_id]) : nil
     end
 end
