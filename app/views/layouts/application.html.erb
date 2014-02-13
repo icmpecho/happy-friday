@@ -10,12 +10,18 @@
 	<div class="container">
 		<div class="header row">
 		    <ul class="nav nav-pills pull-right">
-		    	<li class="dropdown <% if @title == 'Users' or @title == 'Talks' or @title == 'Skips'%>active<% end %>">
+		    	<li class="dropdown <% if @title == 'Tech Talk'%>active<% end %>">
 		    		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tech Talk <b class="caret"></b></a>
 		    		<ul class="dropdown-menu">
-		    			<li<% if @title == 'Users' %> class="active"<% end %>><a href="<%=users_path%>">Schedule</a></li>
-		        		<li<% if @title == 'Talks' %> class="active"<% end %>><a href="<%=talks_path%>">History</a></li>
-		        		<li<% if @title == 'Skips' %> class="active"<% end %>><a href="<%=no_techtalk_days_path%>">No TechTalk Days</a></li>
+		    			<li><a href="<%=users_path%>">Schedule</a></li>
+		        		<li><a href="<%=talks_path%>">History</a></li>
+		        		<li><a href="<%=no_techtalk_days_path%>">No TechTalk Days</a></li>
+		    		</ul>
+		    	</li>
+		    	<li class="dropdown <% if @title == 'Food Finder'%>active<% end %>">
+		    		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Food <b class="caret"></b></a>
+		    		<ul class="dropdown-menu">
+		    			<li><%= link_to 'Schedule', food_finder_teams_path %></li>
 		    		</ul>
 		    	</li>
 		        <% if @me -%>

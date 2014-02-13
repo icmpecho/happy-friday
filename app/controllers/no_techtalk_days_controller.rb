@@ -1,7 +1,7 @@
 class NoTechtalkDaysController < ApplicationController
 	skip_before_filter :verify_authenticity_token
+	before_action :set_title
 	def index
-		@title = 'Skips'
 		@days = NoTechtalkDay.desc(:date)
 		@me = session[:user_id] ? User.find(session[:user_id]) : nil
 		respond_to do |format|
@@ -54,4 +54,8 @@ class NoTechtalkDaysController < ApplicationController
 		end
 	end
 
+	private
+		def set_title
+			@title = 'Tech Talk'
+		end
 end

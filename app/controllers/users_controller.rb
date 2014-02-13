@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	skip_before_filter :verify_authenticity_token
+	before_action :set_title
 	def index
-		@title = 'Users'
 		nickname = params[:nickname]
 		if nickname
 			@users = User.speakers.where(nickname: nickname)
@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 		end
 	end
 	def me
-		@title = 'Me'
 		@teams = FoodFinderTeam.all
 		@me = session[:user_id] ? User.find(session[:user_id]) : nil
 		respond_to do |format|
@@ -74,4 +73,9 @@ class UsersController < ApplicationController
 			format.json { render json: ret }
 		end
 	end
+
+	private
+		def set_title
+			@title = 'Tech Talk'
+		end
 end

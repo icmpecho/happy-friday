@@ -1,11 +1,12 @@
 class FoodFinderTeamsController < ApplicationController
   before_action :set_food_finder_team, only: [:show, :edit, :update, :destroy]
   before_action :set_me
+  before_action :set_title
 
   # GET /food_finder_teams
   # GET /food_finder_teams.json
   def index
-    @food_finder_teams = FoodFinderTeam.asc(:weight)
+      @food_finder_teams = FoodFinderTeam.asc(:weight)
   end
 
   # GET /food_finder_teams/1
@@ -75,5 +76,9 @@ class FoodFinderTeamsController < ApplicationController
 
     def set_me
       @me = session[:user_id] ? User.find(session[:user_id]) : nil
+    end
+
+    def set_title
+      @title = 'Food Finder'
     end
 end
