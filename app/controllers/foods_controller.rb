@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  include DateHelper
   skip_before_filter :verify_authenticity_token
   before_action :set_food, only: [:show, :edit, :update, :destroy]
   before_action :set_me
@@ -30,11 +31,12 @@ class FoodsController < ApplicationController
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to @food, notice: 'Food was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @food }
+        @food.food_finder_team.delivered!
+        flash[:success] = 'Food delivery was successfully reported.'
+        format.html { redirect_to foods_url }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @food.errors, status: :unprocessable_entity }
+        flash[:error] = 'Food delivery report failed.'
+        format.html { redirect_to foods_url }
       end
     end
   end
@@ -71,6 +73,9 @@ class FoodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_params
-      params.require(:food).permit(:delivered_date, :content)
+      food = params.require(:food).permit(:content)
+      food[:delivered_date] = self.last_friday
+      food[:food_finder_team] = FoodFinderTeam.asc(:weight).first
+      return food
     end
 end
