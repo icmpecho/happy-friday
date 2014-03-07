@@ -75,10 +75,6 @@ class FoodFinderTeamsController < ApplicationController
       params.require(:food_finder_team).permit(:name, :weight)
     end
 
-    def set_me
-      @me = session[:user_id] ? User.find(session[:user_id]) : nil
-    end
-
     def set_title
       @title = 'Food Finder'
     end

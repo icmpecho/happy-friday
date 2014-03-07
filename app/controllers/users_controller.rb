@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 	before_action :set_title
+	before_action :set_me
 	def index
 		nickname = params[:nickname]
 		if nickname
@@ -9,7 +10,6 @@ class UsersController < ApplicationController
 			@users = User.speakers
 		end
 		my_id = session[:user_id]
-		@me = my_id ? User.find(my_id) : nil
 		respond_to do |format|
 			format.html
 			format.json { render json: @users, callback: params['callback'] }
@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 	def me
 		@title = 'Me'
 		@teams = FoodFinderTeam.all
-		@me = session[:user_id] ? User.find(session[:user_id]) : nil
 		respond_to do |format|
 			format.html
 			format.json { render json: @me, callback: params['callback'] }

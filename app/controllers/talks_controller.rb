@@ -1,10 +1,11 @@
 class TalksController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 	before_action :set_title
+	before_action :set_me
+
 	include DateHelper
 	def index
 		@talks = Talk.desc(:date)
-		@me = session[:user_id] ? User.find(session[:user_id]) : nil
 		respond_to do |format|
 			format.html
 			format.json { render json: @talks, callback: params['callback'] }
