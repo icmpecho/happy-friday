@@ -1,4 +1,6 @@
 HappyFriday::Application.routes.draw do
+  resources :foods
+
   resources :food_finder_teams
 
   root 'users#index'
