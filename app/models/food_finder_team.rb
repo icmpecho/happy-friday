@@ -6,6 +6,7 @@ class FoodFinderTeam
   has_many :foods
 
   def self.max_weight
+    return 0 if FoodFinderTeam.count <= 0
     FoodFinderTeam.desc(:weight).first.weight
   end
 
