@@ -3,6 +3,7 @@ class FoodsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_action :set_food, only: [:show, :edit, :update, :destroy]
   before_action :set_me
+  before_action :set_title
 
   # GET /foods
   # GET /foods.json
@@ -77,5 +78,9 @@ class FoodsController < ApplicationController
       food[:delivered_date] = self.last_friday
       food[:food_finder_team] = FoodFinderTeam.asc(:weight).first
       return food
+    end
+
+    def set_title
+      @title = 'Food Finder'
     end
 end
