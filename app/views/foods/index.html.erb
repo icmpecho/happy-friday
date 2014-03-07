@@ -1,29 +1,32 @@
-<h1>Listing foods</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Delivered date</th>
-      <th>Content</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @foods.each do |food| %>
+<div class="panel panel-default">
+  <div class="panel-heading">Food History</div>
+  <% if @me %>
+  <div class="panel-body">
+    <form role="form" class="form-inline pull-right" action="<%= foods_path %>" method="post">
+            <div class="form-group">
+                <label class="sr-only">Food : </label>
+                <input type="text" name="food" class="form-control" placeholder="The delivered food">
+            </div>
+            <button type="submit" class="btn btn-success">Report!</button>
+        </form>
+  </div>
+  <% end %>
+  <table class="table">
+    <thread>
+      <tr>
+        <th>Date</th>
+        <th>Food</th>
+        <th>Finder</th>
+      </tr>
+    </thread>
+    <tbody>
+      <% @foods.each do |food| %>
       <tr>
         <td><%= food.delivered_date %></td>
         <td><%= food.content %></td>
-        <td><%= link_to 'Show', food %></td>
-        <td><%= link_to 'Edit', edit_food_path(food) %></td>
-        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= food.food_finder_team.name %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Food', new_food_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
