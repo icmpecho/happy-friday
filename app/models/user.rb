@@ -112,7 +112,9 @@ class User
   end
 
   def as_json(options)
-  	super( :methods => [:next_talk], :except => [:provider, :uid, :email] )
+  	result = super( :methods => [:next_talk], :except => [:provider, :uid, :email] )
+    result[:nickname] = 'ไม่รู้ด้วยแล้ว'
+    return result
   end
 
 end
