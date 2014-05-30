@@ -3,7 +3,7 @@ HappyFriday::Application.routes.draw do
 
   resources :food_finder_teams
 
-  root 'users#index'
+  root 'food_finder_teams#index'
   resources :users
   resources :talks
   resources :no_techtalk_days
