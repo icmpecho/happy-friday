@@ -41,7 +41,7 @@ describe User do
 		bar = nil
 		baz = nil
 	  before do
-			foo = FactoryGirl.create(:user, name: 'Foo', weight: 2)
+			foo = FactoryGirl.create(:user, name: 'Foo', weight: 2, email: 'pinnapong@gmail.com')
 			bar = FactoryGirl.create(:user, name: 'Bar', weight: 3)
 			baz = FactoryGirl.create(:user, name: 'Baz', weight: 5)
 			inactive = FactoryGirl.create(:user, name: 'InActive', weight: 4, active: false)
@@ -97,6 +97,9 @@ describe User do
 			expect(foo.talk?).to eq true
 			expect(bar.talk?).to eq false
 			expect(baz.talk?).to eq false
+		end
+		it 'can return gravatar url' do
+			expect(foo.gravatar_url).to eq 'http://www.gravatar.com/avatar/5f80e4fdf5ca6a812c2c4457c11e2442'
 		end
 	end
 

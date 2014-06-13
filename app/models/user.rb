@@ -1,3 +1,4 @@
+require 'digest/md5'
 class User
   include Mongoid::Document
   include DateHelper
@@ -108,7 +109,12 @@ class User
     if(!self.active)
       return false
     end
-  	self.weight == self.class.min_weight 
+  	self.weight == self.class.min_weight
+  end
+
+  def gravatar_url
+    hash = Digest::MD5.hexdigest(email.downcase)
+    "http://www.gravatar.com/avatar/#{hash}"
   end
 
   def as_json(options)

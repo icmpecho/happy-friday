@@ -19,7 +19,7 @@
   </tr>
   <% @food_finder_team.members.each do |member| %>
   <tr>
-    <td><%= member.email %></td>
+    <td><img src="<%= member.gravatar_url %>" /></td>
     <td><%= member.name %></td>
     <td><%= member.nickname %></td>
   </tr>
