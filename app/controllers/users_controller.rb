@@ -37,10 +37,14 @@ class UsersController < ApplicationController
 		team = params[:team].blank? ? @user.team : params[:team]
 		food_finder_id = params[:food_finder_team]
 		food_finder_team = FoodFinderTeam.find(food_finder_id)
-		@user.team = team
-		@user.nickname = nickname
-		@user.food_finder_team = food_finder_team
-		ret = @user.save
+		if food_finder_team.members.count < 6
+			@user.team = team
+			@user.nickname = nickname
+			@user.food_finder_team = food_finder_team
+			ret = @user.save
+		else
+			ret = false
+		end
 		if ret
 			flash[:success] = "Success!"
 		else
