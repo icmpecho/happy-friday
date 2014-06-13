@@ -11,11 +11,20 @@
 </p>
 
 <strong>Members:</strong>
-<ul>
+<table class="table">
+  <tr>
+    <th>image</th>
+    <th>Name</th>
+    <th>Irc</th>
+  </tr>
   <% @food_finder_team.members.each do |member| %>
-  <li><%= member.name %></li>
+  <tr>
+    <td><%= member.email %></td>
+    <td><%= member.name %></td>
+    <td><%= member.nickname %></td>
+  </tr>
   <% end %>
-</ul>
+</table>
 
 <%= link_to 'Edit', edit_food_finder_team_path(@food_finder_team) %> |
 <%= link_to 'Back', food_finder_teams_path %>
