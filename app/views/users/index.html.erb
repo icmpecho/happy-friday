@@ -1,27 +1,12 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Tech Talk's Schdule</div>
-    <% if @me %>
-    <div class="panel-body">        
-        <form role="form" class="form" action="<%= volunteer_path %>" method="post">
-            <div class="form-group form-inline pull-right">
-                <label>Date : </label>
-                <select class="form-control" name="weeks">
-                    <option value="0">This week</option>
-                    <option value="1">Next week</option>
-                    <option value="2">Next 2 weeks</option>
-                </select> 
-            	<button type="submit" class="btn btn-success">Volunteer!</button>
-            </div>
-        </form>
-    </div>
-    <% end %>
+    <div class="panel-heading">Members</div>
 
     <!-- Table -->
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
+                <th>Image</th>
                 <th>Team</th>
                 <th>Name</th>
                 <th>IRC</th>
@@ -31,8 +16,8 @@
         <tbody>
         	<% @users.each do |user| %>
             <tr <% if @me and user.id == @me.id %> class="warning" <% end %> >
-                <td class="date"><%= user.next_talk %></td>
-                <td><%= user.team %></td>
+                <td class="date"><img src="<%= user.gravatar_url %>" /></td>
+                <td><%= user.food_finder_team == nil ? '-' : user.food_finder_team.name %></td>
                 <td><%= user.name %></td>
                 <td><%= user.nickname %></td>
                 <!-- <td><button type="submit" class="btn btn-danger btn-sm skip" data-toggle="modal" data-target="#modal">Skip it!</button></td> -->
@@ -41,27 +26,4 @@
         </tbody>
     </table>
 </div>
-<!-- modal -->
-<div id="modal" class="modal fade">
-	<div class="modal-dialog">
-		<form role="form" action="<%= no_techtalk_days_path %>" method="post">	
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Why skip ? why ?</h4>
-				</div>
-				<div class="modal-body">					
-		            <div class="form-group">
-		            	<input type="hidden" name="date" value=""/>
-		                <label>Reason : </label>
-		                <input type="text" name="reason" class="form-control" placeholder="Your reason">
-		            </div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save changes</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</form>
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+

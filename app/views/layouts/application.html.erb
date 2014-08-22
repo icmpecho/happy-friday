@@ -10,6 +10,9 @@
 	<div class="container">
 		<div class="header row">
 		    <ul class="nav nav-pills pull-right">
+		    	<li <% if @title == "Members" %>class="active"<%end %>>
+		    		<a href="<%= users_path %>">Members</a>
+		    	</li>
 		    	<li class="dropdown <% if @title == 'Food Finder'%>active<% end %>">
 		    		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Food <b class="caret"></b></a>
 		    		<ul class="dropdown-menu">

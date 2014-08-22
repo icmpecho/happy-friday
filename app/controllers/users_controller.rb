@@ -80,6 +80,6 @@ class UsersController < ApplicationController
 
 	private
 		def set_title
-			@title = 'Tech Talk'
+			@title = 'Members'
 		end
 end
